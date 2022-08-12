@@ -1,0 +1,20 @@
+if we have data like below..
+
+ List<Map<String,Object>> listMap = [
+    {employee=17, fromdate=2010-08-01 00:00:00.0, full_inc=25572.0000},
+    {employee=17, fromdate=2010-09-01 00:00:00.0, full_inc=28347.0000},  
+    {employee=17, fromdate=2010-10-01 00:00:00.0, full_inc=37471.0000},
+    {employee=17, fromdate=2011-02-01 00:00:00.0, full_inc=47033.0000},
+    {employee=17, fromdate=2011-07-01 00:00:00.0, full_inc=50592.0000}
+  ]
+  
+  Then we can sort it with below code ...
+  
+  List<Map<String,Comparable>> listMap =(List<Map<String,Comparable>>) listmap;
+  Collections.sort(listMap, new Comparator<Map<String, Comparable>> () {
+
+    @Override
+    public int compare(Map<String, Comparable> m1, Map<String, Comparable> m2) {
+        return m2.get("full_inc").compareTo(m1.get("full_inc")); //descending if we want to asc we can replace the refrence m2 , m1
+    }
+});
